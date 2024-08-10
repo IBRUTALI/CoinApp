@@ -1,5 +1,6 @@
 package com.ighorosipov.coinapp.feature.cryptocurrency.data.dto
 
+import com.ighorosipov.coinapp.feature.cryptocurrency.data.dto.model.CryptocurrencyDetailDto
 import com.ighorosipov.coinapp.feature.cryptocurrency.data.dto.model.CryptocurrencyDto
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -16,7 +17,7 @@ interface CoinGeckoApi {
     @GET("$COINS/{id}")
     suspend fun getCryptocurrencyDetail(
         @Path("id") coinId: String
-    ): List<CryptocurrencyDto>
+    ): CryptocurrencyDetailDto
 
     companion object {
         const val COINS = "coins"
