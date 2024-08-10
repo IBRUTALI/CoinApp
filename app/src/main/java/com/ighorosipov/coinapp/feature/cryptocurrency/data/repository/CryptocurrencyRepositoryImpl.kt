@@ -11,7 +11,7 @@ import java.io.IOException
 import javax.inject.Inject
 
 class CryptocurrencyRepositoryImpl @Inject constructor(
-    private val api: CoinGeckoApi,
+    private val api: CoinGeckoApi
 ): CryptocurrencyRepository {
 
     override suspend fun getCryptocurrency(
