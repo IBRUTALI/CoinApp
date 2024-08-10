@@ -1,8 +1,8 @@
 package com.ighorosipov.coinapp.di
 
 import com.ighorosipov.coinapp.feature.cryptocurrency.domain.repository.CryptocurrencyRepository
-import com.ighorosipov.coinapp.feature.cryptocurrency.domain.use_case.GetCurrenciesUseCase
-import com.ighorosipov.coinapp.feature.cryptocurrency.domain.use_case.GetCurrencyDetailUseCase
+import com.ighorosipov.coinapp.feature.cryptocurrency.domain.use_case.GetCryptocurrenciesUseCase
+import com.ighorosipov.coinapp.feature.cryptocurrency.domain.use_case.GetCryptocurrencyDetailUseCase
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -11,15 +11,18 @@ import javax.inject.Singleton
 interface UseCaseModule {
 
     companion object {
+
         @Provides
         @Singleton
         fun provideGetCryptocurrenciesUseCase(
             repository: CryptocurrencyRepository
-        ): GetCurrenciesUseCase = GetCurrenciesUseCase(repository)
+        ): GetCryptocurrenciesUseCase = GetCryptocurrenciesUseCase(repository)
+
         @Provides
         @Singleton
         fun provideGetCryptocurrencyDetailUseCase(
             repository: CryptocurrencyRepository
-        ): GetCurrencyDetailUseCase = GetCurrencyDetailUseCase(repository)
+        ): GetCryptocurrencyDetailUseCase = GetCryptocurrencyDetailUseCase(repository)
+
     }
 }

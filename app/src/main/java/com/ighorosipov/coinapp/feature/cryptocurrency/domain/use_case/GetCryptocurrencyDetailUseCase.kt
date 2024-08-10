@@ -5,7 +5,7 @@ import com.ighorosipov.coinapp.util.Resource
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class GetCurrencyDetailUseCase @Inject constructor(
+class GetCryptocurrencyDetailUseCase @Inject constructor(
     private val repository: CryptocurrencyRepository
 ) {
 
