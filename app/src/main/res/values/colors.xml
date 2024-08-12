@@ -10,6 +10,7 @@
     <color name="elem_white">#FFFFFFFF</color>
     <color name="elem_orange400">#FFAD25</color>
     <color name="elem_orange500">#FF9F00</color>
-    <color name="elem_gray">#9B9B9B</color>
+    <color name="elem_gray">#E0000000</color>
+    <color name="elem_gray_light">#33000000</color>
     <color name="elem_error">#EB5757</color>
 </resources>

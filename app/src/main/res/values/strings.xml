@@ -1,7 +1,7 @@
 <resources>
     <!--  BASE  -->
     <string name="app_name">CoinApp</string>
-    <string name="some_error_has_occurred">Произошла какая-то ошибка\n:( Попробуем снова?</string>
+    <string name="some_error_has_occurred">Произошла какая-то ошибка :(\nПопробуем снова?</string>
     <string name="try_again">Попробовать</string>
     <!--  Coins screen  -->
     <string name="list_of_cryptocurrencies">Список криптовалют</string>
@@ -9,4 +9,6 @@
     <!--  Coin detail screen  -->
     <string name="description">Описание</string>
     <string name="categories">Категории</string>
+    <string name="usd">USD</string>
+    <string name="rub">RUB</string>
 </resources>
