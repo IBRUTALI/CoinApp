@@ -8,6 +8,7 @@ import com.ighorosipov.coinapp.feature.cryptocurrency.domain.model.Cryptocurrenc
 import com.ighorosipov.coinapp.feature.cryptocurrency.domain.model.CryptocurrencyDetail
 import com.ighorosipov.coinapp.feature.cryptocurrency.domain.model.detail.Description
 import com.ighorosipov.coinapp.feature.cryptocurrency.domain.model.detail.Image
+import java.util.Locale
 
 class CryptocurrencyMapper {
 
@@ -17,7 +18,7 @@ class CryptocurrencyMapper {
             image = cryptocurrencyDto.image,
             symbol = cryptocurrencyDto.symbol,
             currentPrice = cryptocurrencyDto.currentPrice,
-            priceChangePercentage24h = cryptocurrencyDto.priceChangePercentage24h
+            priceChangePercentage24h =  String.format(Locale.ENGLISH, "%.2f", cryptocurrencyDto.priceChangePercentage24h).toDouble()
         )
     }
 

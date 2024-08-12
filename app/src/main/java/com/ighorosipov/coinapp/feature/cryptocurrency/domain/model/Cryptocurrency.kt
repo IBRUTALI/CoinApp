@@ -6,5 +6,7 @@ data class Cryptocurrency(
     val symbol: String,
     val currentPrice: Double,
     val currencySymbol: String = "$",
-    val priceChangePercentage24h: Double
+    val priceChangePercentage24h: Double,
 )
+
+
