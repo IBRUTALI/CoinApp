@@ -11,4 +11,5 @@
     <string name="categories">Категории</string>
     <string name="usd">USD</string>
     <string name="rub">RUB</string>
+    <string name="coin_image">coin image</string>
 </resources>
