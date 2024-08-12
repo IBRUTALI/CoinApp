@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_25dp">25dp</dimen>
+    <dimen name="corner_5dp">5dp</dimen>
+</resources>
