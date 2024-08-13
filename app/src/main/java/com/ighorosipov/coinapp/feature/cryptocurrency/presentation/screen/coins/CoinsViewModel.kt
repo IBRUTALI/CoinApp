@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.ighorosipov.coinapp.di.IODispatcher
 import com.ighorosipov.coinapp.feature.cryptocurrency.domain.model.Cryptocurrency
 import com.ighorosipov.coinapp.feature.cryptocurrency.domain.use_case.GetCryptocurrenciesUseCase
+import com.ighorosipov.coinapp.util.Currency
 import com.ighorosipov.coinapp.util.Resource
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -12,7 +13,6 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 class CoinsViewModel @AssistedInject constructor(
     private val getCryptocurrenciesUseCase: GetCryptocurrenciesUseCase,
@@ -52,7 +52,7 @@ class CoinsViewModel @AssistedInject constructor(
 
     private fun getCryptocurrencies() {
         viewModelScope.launch(dispatcher) {
-            getCryptocurrenciesUseCase(currentCurrency.value.string).collect { resource ->
+            getCryptocurrenciesUseCase(currentCurrency.value.vsCurrency).collect { resource ->
                 when(resource) {
                     is Resource.Error -> {
                         _isLoading.emit(false)

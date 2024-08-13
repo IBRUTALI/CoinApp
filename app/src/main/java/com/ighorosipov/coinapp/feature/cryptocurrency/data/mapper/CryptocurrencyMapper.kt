@@ -12,11 +12,12 @@ import java.util.Locale
 
 class CryptocurrencyMapper {
 
-    fun cryptocurrencyDtoToDomain(cryptocurrencyDto: CryptocurrencyDto): Cryptocurrency {
+    fun cryptocurrencyDtoToDomain(cryptocurrencyDto: CryptocurrencyDto, currencySymbol: String = "$"): Cryptocurrency {
         return Cryptocurrency(
             id = cryptocurrencyDto.id,
             image = cryptocurrencyDto.image,
             symbol = cryptocurrencyDto.symbol,
+            currencySymbol = currencySymbol,
             currentPrice = cryptocurrencyDto.currentPrice,
             priceChangePercentage24h =  String.format(Locale.ENGLISH, "%.2f", cryptocurrencyDto.priceChangePercentage24h).toDouble()
         )

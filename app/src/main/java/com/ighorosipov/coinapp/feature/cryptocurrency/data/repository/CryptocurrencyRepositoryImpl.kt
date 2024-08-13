@@ -5,23 +5,26 @@ import com.ighorosipov.coinapp.feature.cryptocurrency.data.mapper.Cryptocurrency
 import com.ighorosipov.coinapp.feature.cryptocurrency.domain.model.Cryptocurrency
 import com.ighorosipov.coinapp.feature.cryptocurrency.domain.model.CryptocurrencyDetail
 import com.ighorosipov.coinapp.feature.cryptocurrency.domain.repository.CryptocurrencyRepository
+import com.ighorosipov.coinapp.util.Currency
 import com.ighorosipov.coinapp.util.Resource
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
 class CryptocurrencyRepositoryImpl @Inject constructor(
-    private val api: CoinGeckoApi
-): CryptocurrencyRepository {
+    private val api: CoinGeckoApi,
+) : CryptocurrencyRepository {
 
     override suspend fun getCryptocurrency(
         vsCurrency: String,
         perPage: String?,
     ): Resource<List<Cryptocurrency>> {
         return try {
-            val cryptocurrencies = api.getCryptocurrencies(vsCurrency, perPage).map { cryptocurrencyDto ->
-                CryptocurrencyMapper().cryptocurrencyDtoToDomain(cryptocurrencyDto)
-            }
+            val currencySymbol = Currency.valueOf(vsCurrency).symbol
+            val cryptocurrencies =
+                api.getCryptocurrencies(vsCurrency, perPage).map { cryptocurrencyDto ->
+                    CryptocurrencyMapper().cryptocurrencyDtoToDomain(cryptocurrencyDto, currencySymbol)
+                }
 
             Resource.Success(
                 data = cryptocurrencies

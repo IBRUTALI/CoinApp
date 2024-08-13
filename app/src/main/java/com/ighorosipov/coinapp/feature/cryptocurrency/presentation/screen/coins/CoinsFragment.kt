@@ -2,7 +2,6 @@ package com.ighorosipov.coinapp.feature.cryptocurrency.presentation.screen.coins
 
 import android.view.View
 import androidx.core.os.bundleOf
-import androidx.core.view.get
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -14,6 +13,7 @@ import com.ighorosipov.coinapp.databinding.FragmentCoinsBinding
 import com.ighorosipov.coinapp.feature.cryptocurrency.domain.model.Cryptocurrency
 import com.ighorosipov.coinapp.feature.cryptocurrency.presentation.screen.coins.adapter.CoinsAdapter
 import com.ighorosipov.coinapp.util.Constants.BUNDLE_COIN_ID
+import com.ighorosipov.coinapp.util.Currency
 import com.ighorosipov.coinapp.util.base.BaseFragment
 import com.ighorosipov.coinapp.util.di.appComponent
 import com.ighorosipov.coinapp.util.di.lazyViewModel
