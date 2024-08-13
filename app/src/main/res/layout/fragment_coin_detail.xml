@@ -93,8 +93,9 @@
 
             <ImageView
                 android:id="@+id/image_coin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/image_size_medium"
+                android:layout_height="@dimen/image_size_medium"
+                android:background="@android:color/transparent"
                 android:layout_marginVertical="@dimen/margin_10dp"
                 android:contentDescription="@string/coin_image"
                 tools:src="@drawable/im_coin" />
