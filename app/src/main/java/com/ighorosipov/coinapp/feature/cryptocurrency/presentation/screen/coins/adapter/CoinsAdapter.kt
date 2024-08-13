@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.ighorosipov.coinapp.R
 import com.ighorosipov.coinapp.databinding.ItemCryptocurrencyBinding
 import com.ighorosipov.coinapp.feature.cryptocurrency.domain.model.Cryptocurrency
+import java.text.DecimalFormat
 import java.util.Locale
 
 class CoinsAdapter: RecyclerView.Adapter<CoinsAdapter.CoinsViewHolder>() {
@@ -33,17 +34,16 @@ class CoinsAdapter: RecyclerView.Adapter<CoinsAdapter.CoinsViewHolder>() {
                 .into(imageCoin)
             coinName.text = cryptocurrencies[holder.adapterPosition].name
             coinSymbol.text = cryptocurrencies[holder.adapterPosition].symbol.uppercase()
+
             "${cryptocurrencies[holder.adapterPosition].currencySymbol} ${cryptocurrencies[holder.adapterPosition].currentPrice}".apply {
                 coinPrice.text = this
             }
-            val coinPriceChangeInPercentage = if (cryptocurrencies[holder.adapterPosition].priceChangePercentage24h < 0) {
+            if (cryptocurrencies[holder.adapterPosition].priceChangePercentage24h[0] == '-') {
                 coinPriceChange.setTextColor(holder.itemView.context.getColor(R.color.text_red))
-                "${cryptocurrencies[holder.adapterPosition].priceChangePercentage24h}%"
             } else {
                 coinPriceChange.setTextColor(holder.itemView.context.getColor(R.color.text_green))
-                "+ ${cryptocurrencies[holder.adapterPosition].priceChangePercentage24h}%"
             }
-            coinPriceChange.text = coinPriceChangeInPercentage
+            coinPriceChange.text = cryptocurrencies[holder.adapterPosition].priceChangePercentage24h
         }
         holder.itemView.setOnClickListener {
             if (onClickListener != null) {

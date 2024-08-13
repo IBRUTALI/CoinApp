@@ -8,19 +8,25 @@ import com.ighorosipov.coinapp.feature.cryptocurrency.domain.model.Cryptocurrenc
 import com.ighorosipov.coinapp.feature.cryptocurrency.domain.model.CryptocurrencyDetail
 import com.ighorosipov.coinapp.feature.cryptocurrency.domain.model.detail.Description
 import com.ighorosipov.coinapp.feature.cryptocurrency.domain.model.detail.Image
+import java.text.DecimalFormat
 import java.util.Locale
 
 class CryptocurrencyMapper {
 
     fun cryptocurrencyDtoToDomain(cryptocurrencyDto: CryptocurrencyDto, currencySymbol: String = "$"): Cryptocurrency {
+        val decimalFormat = DecimalFormat("#,##0.00")
         return Cryptocurrency(
             id = cryptocurrencyDto.id,
             name = cryptocurrencyDto.name,
             image = cryptocurrencyDto.image,
             symbol = cryptocurrencyDto.symbol,
             currencySymbol = currencySymbol,
-            currentPrice = cryptocurrencyDto.currentPrice,
-            priceChangePercentage24h =  String.format(Locale.ENGLISH, "%.2f", cryptocurrencyDto.priceChangePercentage24h).toDouble()
+            currentPrice = decimalFormat.format(cryptocurrencyDto.currentPrice),
+            priceChangePercentage24h =  if(cryptocurrencyDto.priceChangePercentage24h < 0) {
+                decimalFormat.format(cryptocurrencyDto.priceChangePercentage24h).replace("-", "- ") + "%"
+            } else {
+                "+ " + decimalFormat.format(cryptocurrencyDto.priceChangePercentage24h) + "%"
+            }
         )
     }
 
