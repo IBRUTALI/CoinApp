@@ -79,7 +79,7 @@ data class PriceChange24hInCurrency(
     @SerializedName("myr")
     val myr: Double,
     @SerializedName("ngn")
-    val ngn: Int,
+    val ngn: Double,
     @SerializedName("nok")
     val nok: Double,
     @SerializedName("nzd")
@@ -123,7 +123,7 @@ data class PriceChange24hInCurrency(
     @SerializedName("xlm")
     val xlm: Double,
     @SerializedName("xrp")
-    val xrp: Int,
+    val xrp: Double,
     @SerializedName("yfi")
     val yfi: Double,
     @SerializedName("zar")

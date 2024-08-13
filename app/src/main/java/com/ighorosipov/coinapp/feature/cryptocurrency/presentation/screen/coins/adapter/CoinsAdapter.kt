@@ -44,6 +44,14 @@ class CoinsAdapter: RecyclerView.Adapter<CoinsAdapter.CoinsViewHolder>() {
             }
             coinPriceChange.text = coinPriceChangeInPercentage
         }
+        holder.itemView.setOnClickListener {
+            if (onClickListener != null) {
+                onClickListener?.onCoinClick(
+                    holder.adapterPosition,
+                    cryptocurrencies[holder.adapterPosition]
+                )
+            }
+        }
 
     }
 

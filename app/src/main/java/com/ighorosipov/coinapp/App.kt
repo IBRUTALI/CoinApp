@@ -2,6 +2,7 @@ package com.ighorosipov.coinapp
 
 import android.app.Application
 import com.ighorosipov.coinapp.di.AppComponent
+import com.ighorosipov.coinapp.di.DaggerAppComponent
 
 class App: Application() {
 

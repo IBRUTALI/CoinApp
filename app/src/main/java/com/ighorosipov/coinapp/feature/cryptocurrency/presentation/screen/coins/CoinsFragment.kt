@@ -100,8 +100,9 @@ class CoinsFragment : BaseFragment<FragmentCoinsBinding, CoinsViewModel>(
     }
 
     private fun chipGroupCheckChange() {
-        binding.chipGroup.setOnCheckedStateChangeListener { group, checkedIds ->
-            val checkCurrency = (group[checkedIds[0]] as Chip).text.toString()
+        binding.chipGroup.setOnCheckedStateChangeListener { group, _ ->
+            val checkedChip = group.findViewById<Chip>(group.checkedChipId)
+            val checkCurrency = checkedChip.text.toString()
             viewModel.onEvent(CoinsScreenEvent.ChangeCurrency(Currency.valueOf(checkCurrency)))
         }
     }

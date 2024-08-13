@@ -17,7 +17,7 @@ data class MarketCapChange24hInCurrency(
     @SerializedName("bhd")
     val bhd: Double,
     @SerializedName("bits")
-    val bits: Int,
+    val bits: Double,
     @SerializedName("bmd")
     val bmd: Double,
     @SerializedName("bnb")
@@ -39,11 +39,11 @@ data class MarketCapChange24hInCurrency(
     @SerializedName("dkk")
     val dkk: Double,
     @SerializedName("dot")
-    val dot: Long,
+    val dot: Double,
     @SerializedName("eos")
     val eos: Double,
     @SerializedName("eth")
-    val eth: Int,
+    val eth: Double,
     @SerializedName("eur")
     val eur: Double,
     @SerializedName("gbp")
@@ -79,7 +79,7 @@ data class MarketCapChange24hInCurrency(
     @SerializedName("myr")
     val myr: Double,
     @SerializedName("ngn")
-    val ngn: Long,
+    val ngn: Double,
     @SerializedName("nok")
     val nok: Double,
     @SerializedName("nzd")
@@ -95,7 +95,7 @@ data class MarketCapChange24hInCurrency(
     @SerializedName("sar")
     val sar: Double,
     @SerializedName("sats")
-    val sats: Long,
+    val sats: Double,
     @SerializedName("sek")
     val sek: Double,
     @SerializedName("sgd")
@@ -123,9 +123,9 @@ data class MarketCapChange24hInCurrency(
     @SerializedName("xlm")
     val xlm: Double,
     @SerializedName("xrp")
-    val xrp: Long,
+    val xrp: Double,
     @SerializedName("yfi")
-    val yfi: Int,
+    val yfi: Double,
     @SerializedName("zar")
-    val zar: Long
+    val zar: Double
 )

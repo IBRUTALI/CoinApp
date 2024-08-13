@@ -73,5 +73,5 @@ dependencies {
 
     //Glide
     implementation(libs.glide)
-    ksp(libs.glide.compiler)
+    kapt(libs.glide.compiler)
 }
