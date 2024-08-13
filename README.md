@@ -58,3 +58,18 @@
   - Подготовить приложение к релизу (скинуть ссылку HR).
 
 Итоговое время займет 6,7-13,3 часов.
+
+Результат:    
+<p align="center">
+  <img align="center" width="30%" src="https://github.com/user-attachments/assets/5943f328-67b6-4076-9be5-459e105b52fa">
+  <img align="center" width="30%" src="https://github.com/user-attachments/assets/292160a9-741a-475a-96e8-c610869fe392">
+  <img align="center" width="30%" src="https://github.com/user-attachments/assets/ddf101ef-75fe-4843-88f0-8c036f16abcc">
+</p>
+<p align="center">
+  <img align="center" width="30%" src="https://github.com/user-attachments/assets/fc52a643-5154-4439-bfd2-33e5b51e4c43">
+  <img align="center" width="30%" src="https://github.com/user-attachments/assets/441a9cdc-d2e2-40ac-9847-2561d1a67684">
+  <img align="center" width="30%" src="https://github.com/user-attachments/assets/1a2b6c07-da17-42ab-b77a-4e41c410372f">
+</p>
+<p align="center">
+  <img align="center" width="30%" src="https://github.com/user-attachments/assets/922ca2a6-4d61-4608-a668-5b352a89201b">
+</p>
