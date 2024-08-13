@@ -1,5 +1,6 @@
 package com.ighorosipov.coinapp.feature.cryptocurrency.presentation.screen.coins
 
+import android.content.res.Configuration
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Lifecycle
@@ -36,7 +37,6 @@ class CoinsFragment : BaseFragment<FragmentCoinsBinding, CoinsViewModel>(
     override fun initViews() {
         initCoinsAdapter()
         repeatConnection()
-        chipGroupCheckChange()
         onCoinClick()
     }
 
@@ -81,6 +81,7 @@ class CoinsFragment : BaseFragment<FragmentCoinsBinding, CoinsViewModel>(
                         Currency.RUB -> binding.chipRub.id
                     }
                     binding.chipGroup.check(checkId)
+                    chipGroupCheckChange()
                 }
             }
         }
