@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.ighorosipov.coinapp.R
 import com.ighorosipov.coinapp.databinding.ItemCryptocurrencyBinding
 import com.ighorosipov.coinapp.feature.cryptocurrency.domain.model.Cryptocurrency
+import java.util.Locale
 
 class CoinsAdapter: RecyclerView.Adapter<CoinsAdapter.CoinsViewHolder>() {
     private var onClickListener: OnClickListener? = null
@@ -30,8 +31,8 @@ class CoinsAdapter: RecyclerView.Adapter<CoinsAdapter.CoinsViewHolder>() {
             Glide.with(holder.itemView.context)
                 .load(cryptocurrencies[holder.adapterPosition].image)
                 .into(imageCoin)
-            coinName.text = cryptocurrencies[holder.adapterPosition].id
-            coinSymbol.text = cryptocurrencies[holder.adapterPosition].symbol
+            coinName.text = cryptocurrencies[holder.adapterPosition].name
+            coinSymbol.text = cryptocurrencies[holder.adapterPosition].symbol.uppercase()
             "${cryptocurrencies[holder.adapterPosition].currencySymbol} ${cryptocurrencies[holder.adapterPosition].currentPrice}".apply {
                 coinPrice.text = this
             }

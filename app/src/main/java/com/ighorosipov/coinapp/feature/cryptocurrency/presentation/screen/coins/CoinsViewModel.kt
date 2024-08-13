@@ -52,7 +52,10 @@ class CoinsViewModel @AssistedInject constructor(
 
     private fun getCryptocurrencies() {
         viewModelScope.launch(dispatcher) {
-            getCryptocurrenciesUseCase(currentCurrency.value.vsCurrency).collect { resource ->
+            getCryptocurrenciesUseCase(
+                vsCurrency = currentCurrency.value.vsCurrency,
+                perPage = "20"
+            ).collect { resource ->
                 when(resource) {
                     is Resource.Error -> {
                         _isLoading.emit(false)

@@ -15,6 +15,7 @@ class CryptocurrencyMapper {
     fun cryptocurrencyDtoToDomain(cryptocurrencyDto: CryptocurrencyDto, currencySymbol: String = "$"): Cryptocurrency {
         return Cryptocurrency(
             id = cryptocurrencyDto.id,
+            name = cryptocurrencyDto.name,
             image = cryptocurrencyDto.image,
             symbol = cryptocurrencyDto.symbol,
             currencySymbol = currencySymbol,
@@ -26,6 +27,7 @@ class CryptocurrencyMapper {
     fun cryptocurrencyDetailDtoToDomain(cryptocurrencyDetailDto: CryptocurrencyDetailDto): CryptocurrencyDetail {
         return CryptocurrencyDetail(
             id = cryptocurrencyDetailDto.id,
+            name = cryptocurrencyDetailDto.name,
             image = imageDtoToDomain(cryptocurrencyDetailDto.image),
             description = descriptionDtoToDomain(cryptocurrencyDetailDto.description),
             categories = cryptocurrencyDetailDto.categories
