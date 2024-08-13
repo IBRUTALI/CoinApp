@@ -12,4 +12,6 @@
     <string name="usd">USD</string>
     <string name="rub">RUB</string>
     <string name="coin_image">coin image</string>
+    <string name="test_description">Bitcoin is the first successful internet money based on peer-to-peer technology; whereby no central bank or authority is involved in the transaction and production of the Bitcoin currency</string>
+    <string name="test_categories">Smart Contract Platform, Ethereum Ecosystems</string>
 </resources>

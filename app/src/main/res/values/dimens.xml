@@ -2,5 +2,6 @@
 <resources>
     <dimen name="padding_25dp">25dp</dimen>
     <dimen name="corner_5dp">5dp</dimen>
+    <dimen name="margin_10dp">10dp</dimen>
     <dimen name="margin_15dp">15dp</dimen>
 </resources>
