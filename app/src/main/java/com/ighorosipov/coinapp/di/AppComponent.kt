@@ -2,6 +2,10 @@ package com.ighorosipov.coinapp.di
 
 import android.app.Application
 import com.ighorosipov.coinapp.MainActivity
+import com.ighorosipov.coinapp.feature.cryptocurrency.presentation.screen.coin_detail.CoinDetailFragment
+import com.ighorosipov.coinapp.feature.cryptocurrency.presentation.screen.coin_detail.CoinDetailViewModel
+import com.ighorosipov.coinapp.feature.cryptocurrency.presentation.screen.coins.CoinsFragment
+import com.ighorosipov.coinapp.feature.cryptocurrency.presentation.screen.coins.CoinsViewModel
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -29,5 +33,9 @@ interface AppComponent {
     }
 
     fun inject(mainActivity: MainActivity)
+    fun inject(coinsFragment: CoinsFragment)
+    fun inject(coinDetailFragment: CoinDetailFragment)
 
+    fun coinsViewModel(): CoinsViewModel.Factory
+    fun coinDetailViewModel(): CoinDetailViewModel.Factory
 }

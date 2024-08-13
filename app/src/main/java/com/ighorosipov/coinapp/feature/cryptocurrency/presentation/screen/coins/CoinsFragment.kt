@@ -15,6 +15,7 @@ import com.ighorosipov.coinapp.feature.cryptocurrency.domain.model.Cryptocurrenc
 import com.ighorosipov.coinapp.feature.cryptocurrency.presentation.screen.coins.adapter.CoinsAdapter
 import com.ighorosipov.coinapp.util.Constants.BUNDLE_COIN_ID
 import com.ighorosipov.coinapp.util.base.BaseFragment
+import com.ighorosipov.coinapp.util.di.appComponent
 import com.ighorosipov.coinapp.util.di.lazyViewModel
 import kotlinx.coroutines.launch
 
@@ -25,11 +26,11 @@ class CoinsFragment : BaseFragment<FragmentCoinsBinding, CoinsViewModel>(
     private val coinsAdapter by lazy { CoinsAdapter() }
 
     override val viewModel: CoinsViewModel by lazyViewModel {
-        requireContext().appComponent().hotelListViewModel().create()
+        requireContext().appComponent().coinsViewModel().create()
     }
 
     override fun inject() {
-        TODO("Not yet implemented")
+        requireContext().appComponent().inject(this)
     }
 
     override fun initViews() {

@@ -4,12 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ighorosipov.coinapp.di.IODispatcher
 import com.ighorosipov.coinapp.feature.cryptocurrency.domain.model.CryptocurrencyDetail
-import com.ighorosipov.coinapp.feature.cryptocurrency.domain.model.detail.Description
-import com.ighorosipov.coinapp.feature.cryptocurrency.domain.model.detail.Image
 import com.ighorosipov.coinapp.feature.cryptocurrency.domain.use_case.GetCryptocurrencyDetailUseCase
-import com.ighorosipov.coinapp.feature.cryptocurrency.presentation.screen.coins.CoinsScreenEvent
 import com.ighorosipov.coinapp.util.Resource
 import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -68,6 +66,11 @@ class CoinDetailViewModel @AssistedInject constructor(
 
             }
         }
+    }
+
+    @AssistedFactory
+    interface Factory {
+        fun create(coinId: String?): CoinDetailViewModel
     }
 
 }

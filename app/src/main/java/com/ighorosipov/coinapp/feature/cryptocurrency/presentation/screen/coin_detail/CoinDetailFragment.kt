@@ -9,16 +9,19 @@ import com.ighorosipov.coinapp.databinding.FragmentCoinDetailBinding
 import com.ighorosipov.coinapp.feature.cryptocurrency.domain.model.CryptocurrencyDetail
 import com.ighorosipov.coinapp.util.Constants.BUNDLE_COIN_ID
 import com.ighorosipov.coinapp.util.base.BaseFragment
+import com.ighorosipov.coinapp.util.di.appComponent
+import com.ighorosipov.coinapp.util.di.lazyViewModel
 import kotlinx.coroutines.launch
 
 class CoinDetailFragment: BaseFragment<FragmentCoinDetailBinding, CoinDetailViewModel>(
     FragmentCoinDetailBinding::inflate
 ) {
-    override val viewModel: CoinDetailViewModel
-        get() = TODO("Not yet implemented")
+    override val viewModel: CoinDetailViewModel by lazyViewModel {
+        requireContext().appComponent().coinDetailViewModel().create(getBundle())
+    }
 
     override fun inject() {
-        TODO("Not yet implemented")
+        requireContext().appComponent().inject(this)
     }
 
     override fun initViews() {
