@@ -10,8 +10,10 @@ import com.ighorosipov.coinapp.util.Resource
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
 class CoinsViewModel @AssistedInject constructor(
@@ -31,6 +33,9 @@ class CoinsViewModel @AssistedInject constructor(
     private val _cryptocurrencies = MutableStateFlow(emptyList<Cryptocurrency>())
     val cryptocurrencies: StateFlow<List<Cryptocurrency>> = _cryptocurrencies
 
+    private val swipeToRefreshChannel = Channel<Resource<Unit>>()
+    val swipeToRefreshEvent = swipeToRefreshChannel.receiveAsFlow()
+
     init {
         getCryptocurrencies()
     }
@@ -45,7 +50,7 @@ class CoinsViewModel @AssistedInject constructor(
                 getCryptocurrencies()
             }
             is CoinsScreenEvent.PullToRefresh -> {
-                //TODO
+                swipeToRefresh()
             }
         }
     }
@@ -72,6 +77,28 @@ class CoinsViewModel @AssistedInject constructor(
                     }
                 }
 
+            }
+        }
+    }
+
+    private fun swipeToRefresh() {
+        viewModelScope.launch(dispatcher) {
+            getCryptocurrenciesUseCase(
+                vsCurrency = currentCurrency.value.vsCurrency,
+                perPage = "20"
+            ).collect { resource ->
+                 when(resource) {
+                     is Resource.Error -> {
+                         swipeToRefreshChannel.send(Resource.Error(message = "Произошла ошибка при загрузке"))
+                     }
+                     is Resource.Loading -> {
+                         swipeToRefreshChannel.send(Resource.Loading())
+                     }
+                     is Resource.Success -> {
+                         swipeToRefreshChannel.send(Resource.Success(Unit))
+                         _cryptocurrencies.emit(resource.data ?: emptyList())
+                     }
+                 }
             }
         }
     }

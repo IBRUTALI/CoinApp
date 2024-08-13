@@ -1,6 +1,5 @@
 package com.ighorosipov.coinapp.feature.cryptocurrency.presentation.screen.coins
 
-import android.content.res.Configuration
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Lifecycle
@@ -9,12 +8,14 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.chip.Chip
+import com.google.android.material.snackbar.Snackbar
 import com.ighorosipov.coinapp.R
 import com.ighorosipov.coinapp.databinding.FragmentCoinsBinding
 import com.ighorosipov.coinapp.feature.cryptocurrency.domain.model.Cryptocurrency
 import com.ighorosipov.coinapp.feature.cryptocurrency.presentation.screen.coins.adapter.CoinsAdapter
 import com.ighorosipov.coinapp.util.Constants.BUNDLE_COIN_ID
 import com.ighorosipov.coinapp.util.Currency
+import com.ighorosipov.coinapp.util.Resource
 import com.ighorosipov.coinapp.util.base.BaseFragment
 import com.ighorosipov.coinapp.util.di.appComponent
 import com.ighorosipov.coinapp.util.di.lazyViewModel
@@ -38,6 +39,7 @@ class CoinsFragment : BaseFragment<FragmentCoinsBinding, CoinsViewModel>(
         initCoinsAdapter()
         repeatConnection()
         onCoinClick()
+        swipeToRefresh()
     }
 
     override fun subscribeToObservers() {
@@ -85,6 +87,24 @@ class CoinsFragment : BaseFragment<FragmentCoinsBinding, CoinsViewModel>(
                 }
             }
         }
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.swipeToRefreshEvent.collect { resource ->
+                    when(resource) {
+                        is Resource.Error -> {
+                            binding.swipeToRefresh.isRefreshing = false
+                            resource.message?.let { showSnackbar(it) }
+                        }
+                        is Resource.Loading -> {
+                            binding.swipeToRefresh.isRefreshing = true
+                        }
+                        is Resource.Success -> {
+                            binding.swipeToRefresh.isRefreshing = false
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private fun initCoinsAdapter() {
@@ -118,6 +138,18 @@ class CoinsFragment : BaseFragment<FragmentCoinsBinding, CoinsViewModel>(
                 )
             }
         })
+    }
+
+    private fun swipeToRefresh() {
+        binding.swipeToRefresh.setOnRefreshListener {
+            viewModel.onEvent(CoinsScreenEvent.PullToRefresh)
+        }
+    }
+
+    private fun showSnackbar(message: String) {
+        val snackbar = Snackbar.make(binding.swipeToRefresh, message, Snackbar.LENGTH_SHORT)
+
+        snackbar.show()
     }
 
 }
