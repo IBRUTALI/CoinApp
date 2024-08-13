@@ -11,6 +11,7 @@
     <color name="elem_white">#FFFFFFFF</color>
     <color name="elem_orange400">#FFAD25</color>
     <color name="elem_orange500">#FF9F00</color>
+    <color name="elem_red">#EB5757</color>
     <color name="elem_gray">#E0000000</color>
     <color name="elem_gray_light">#33000000</color>
     <color name="elem_gray_ultraLight">#E8E8E8</color>

@@ -21,6 +21,7 @@ import com.ighorosipov.coinapp.util.di.appComponent
 import com.ighorosipov.coinapp.util.di.lazyViewModel
 import kotlinx.coroutines.launch
 
+
 class CoinsFragment : BaseFragment<FragmentCoinsBinding, CoinsViewModel>(
     FragmentCoinsBinding::inflate
 ) {
@@ -78,7 +79,7 @@ class CoinsFragment : BaseFragment<FragmentCoinsBinding, CoinsViewModel>(
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.currentCurrency.collect { currency ->
-                  val checkId = when(currency) {
+                    val checkId = when (currency) {
                         Currency.USD -> binding.chipUsd.id
                         Currency.RUB -> binding.chipRub.id
                     }
@@ -90,14 +91,16 @@ class CoinsFragment : BaseFragment<FragmentCoinsBinding, CoinsViewModel>(
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.swipeToRefreshEvent.collect { resource ->
-                    when(resource) {
+                    when (resource) {
                         is Resource.Error -> {
                             binding.swipeToRefresh.isRefreshing = false
                             resource.message?.let { showSnackbar(it) }
                         }
+
                         is Resource.Loading -> {
                             binding.swipeToRefresh.isRefreshing = true
                         }
+
                         is Resource.Success -> {
                             binding.swipeToRefresh.isRefreshing = false
                         }
@@ -129,7 +132,7 @@ class CoinsFragment : BaseFragment<FragmentCoinsBinding, CoinsViewModel>(
     }
 
     private fun onCoinClick() {
-        coinsAdapter.setOnClickListener(object: CoinsAdapter.OnClickListener {
+        coinsAdapter.setOnClickListener(object : CoinsAdapter.OnClickListener {
             override fun onCoinClick(position: Int, cryptocurrency: Cryptocurrency) {
                 val bundle = bundleOf(BUNDLE_COIN_ID to cryptocurrency.id)
                 findNavController().navigate(
@@ -147,8 +150,8 @@ class CoinsFragment : BaseFragment<FragmentCoinsBinding, CoinsViewModel>(
     }
 
     private fun showSnackbar(message: String) {
-        val snackbar = Snackbar.make(binding.swipeToRefresh, message, Snackbar.LENGTH_SHORT)
-
+        val snackbar = Snackbar.make(binding.swipeToRefresh, message, Snackbar.LENGTH_LONG)
+        snackbar.setBackgroundTint(resources.getColor(R.color.elem_red))
         snackbar.show()
     }
 
