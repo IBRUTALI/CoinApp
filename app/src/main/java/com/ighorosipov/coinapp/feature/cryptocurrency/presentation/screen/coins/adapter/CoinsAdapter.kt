@@ -56,7 +56,7 @@ class CoinsAdapter: RecyclerView.Adapter<CoinsAdapter.CoinsViewHolder>() {
     }
 
     interface OnClickListener {
-        fun onHotelClick(position: Int, cryptocurrency: Cryptocurrency)
+        fun onCoinClick(position: Int, cryptocurrency: Cryptocurrency)
     }
 
     fun setList(newList: List<Cryptocurrency>) {

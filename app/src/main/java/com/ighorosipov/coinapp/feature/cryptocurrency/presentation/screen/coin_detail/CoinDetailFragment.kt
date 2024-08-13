@@ -7,6 +7,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.bumptech.glide.Glide
 import com.ighorosipov.coinapp.databinding.FragmentCoinDetailBinding
 import com.ighorosipov.coinapp.feature.cryptocurrency.domain.model.CryptocurrencyDetail
+import com.ighorosipov.coinapp.util.Constants.BUNDLE_COIN_ID
 import com.ighorosipov.coinapp.util.base.BaseFragment
 import kotlinx.coroutines.launch
 
@@ -76,5 +77,10 @@ class CoinDetailFragment: BaseFragment<FragmentCoinDetailBinding, CoinDetailView
             viewModel.onEvent(CoinDetailEvent.GetCurrencyDetail)
         }
     }
+
+    private fun getBundle(): String? {
+        return arguments?.getString(BUNDLE_COIN_ID)
+    }
+
 
 }
