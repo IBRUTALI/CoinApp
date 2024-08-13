@@ -4,14 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginHorizontal="@dimen/margin_15dp"
     tools:context=".feature.cryptocurrency.presentation.screen.coin_detail.CoinDetailFragment">
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@drawable/shadow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/group_success"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:visibility="visible"
         app:constraint_referenced_ids="scrollView" />
 
     <androidx.constraintlayout.widget.Group
@@ -104,6 +112,7 @@
                 android:id="@+id/description_hardcode"
                 style="@style/CustomText.LargeTitle1"
                 android:layout_width="match_parent"
+                android:layout_marginHorizontal="@dimen/margin_15dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_10dp"
                 android:text="@string/description" />
@@ -113,6 +122,7 @@
                 style="@style/CustomText.Title1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_15dp"
                 android:layout_marginBottom="@dimen/margin_15dp"
                 tools:text="@string/test_description" />
 
@@ -121,6 +131,7 @@
                 style="@style/CustomText.LargeTitle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_15dp"
                 android:layout_marginBottom="@dimen/margin_10dp"
                 android:text="@string/categories" />
 
@@ -129,6 +140,7 @@
                 style="@style/CustomText.Title1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_15dp"
                 tools:text="@string/test_categories" />
         </LinearLayout>
 

@@ -1,6 +1,7 @@
 package com.ighorosipov.coinapp.feature.cryptocurrency.presentation.screen.coin_detail
 
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -12,6 +13,7 @@ import com.ighorosipov.coinapp.util.base.BaseFragment
 import com.ighorosipov.coinapp.util.di.appComponent
 import com.ighorosipov.coinapp.util.di.lazyViewModel
 import kotlinx.coroutines.launch
+
 
 class CoinDetailFragment: BaseFragment<FragmentCoinDetailBinding, CoinDetailViewModel>(
     FragmentCoinDetailBinding::inflate
@@ -72,6 +74,7 @@ class CoinDetailFragment: BaseFragment<FragmentCoinDetailBinding, CoinDetailView
                 .into(imageCoin)
             description.text = cryptocurrency.description.en
             category.text = cryptocurrency.categories.joinToString(", ")
+            (activity as AppCompatActivity?)?.supportActionBar?.title =cryptocurrency.name
         }
     }
 

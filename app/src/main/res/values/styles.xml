@@ -69,4 +69,17 @@
         <item name="android:textColor">@drawable/chip_text_color</item>
     </style>
 
+    <!--  Toolbar  -->
+    <style name="CustomToolbarStyle" parent="Widget.MaterialComponents.Toolbar">
+        <item name="android:popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+
+    <style name="CustomToolbarStyle.Event" parent="CustomToolbarStyle">
+        <item name="android:titleTextAppearance">@style/CustomText.LargeTitle1</item>
+        <item name="android:tint">@color/elem_white</item>
+        <item name="android:textColorPrimary">@color/text_black</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_arrow_back</item>
+    </style>
+
 </resources>

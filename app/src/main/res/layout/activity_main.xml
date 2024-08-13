@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        style="@style/CustomToolbarStyle.Event"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:buttonGravity="center_vertical" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host"
@@ -18,4 +25,4 @@
         tools:context=".presentation.MainActivity"
         tools:layout="@layout/fragment_coins" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

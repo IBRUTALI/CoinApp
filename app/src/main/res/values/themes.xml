@@ -3,6 +3,9 @@
     <style name="Base.Theme.CoinApp" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Status bar. -->
+        <item name="android:statusBarColor">@color/elem_gray_ultraLight</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="Theme.CoinApp" parent="Base.Theme.CoinApp" />
