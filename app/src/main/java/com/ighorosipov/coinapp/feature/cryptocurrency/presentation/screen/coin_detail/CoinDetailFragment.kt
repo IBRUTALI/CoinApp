@@ -56,8 +56,8 @@ class CoinDetailFragment: BaseFragment<FragmentCoinDetailBinding, CoinDetailView
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.cryptocurrency.collect { cryptocurrency ->
-                    binding.groupSuccess.visibility = View.VISIBLE
                     if (cryptocurrency != null) {
+                        binding.groupSuccess.visibility = View.VISIBLE
                         setupUI(cryptocurrency)
                     }
                 }
@@ -71,7 +71,7 @@ class CoinDetailFragment: BaseFragment<FragmentCoinDetailBinding, CoinDetailView
                 .load(cryptocurrency.image.large)
                 .into(imageCoin)
             description.text = cryptocurrency.description.en
-            category.text = cryptocurrency.categories.joinToString(",")
+            category.text = cryptocurrency.categories.joinToString(", ")
         }
     }
 

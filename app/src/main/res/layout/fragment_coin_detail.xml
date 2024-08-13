@@ -11,7 +11,7 @@
         android:id="@+id/group_success"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="visible"
+        android:visibility="gone"
         app:constraint_referenced_ids="scrollView" />
 
     <androidx.constraintlayout.widget.Group
@@ -38,7 +38,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/image_coin_default"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
