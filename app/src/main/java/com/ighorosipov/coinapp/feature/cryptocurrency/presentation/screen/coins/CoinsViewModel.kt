@@ -23,8 +23,8 @@ class CoinsViewModel @Inject constructor(
     private val _isError = MutableStateFlow(false)
     val isError: StateFlow<Boolean> = _isError
 
-    private val _currentCurrency = MutableStateFlow("USD")
-    val currentCurrency: StateFlow<String> = _currentCurrency
+    private val _currentCurrency = MutableStateFlow(Currency.USD)
+    val currentCurrency: StateFlow<Currency> = _currentCurrency
 
     private val _cryptocurrencies = MutableStateFlow(emptyList<Cryptocurrency>())
     val cryptocurrencies: StateFlow<List<Cryptocurrency>> = _cryptocurrencies
@@ -37,6 +37,7 @@ class CoinsViewModel @Inject constructor(
         when(event) {
             is CoinsScreenEvent.ChangeCurrency -> {
                 _currentCurrency.value = event.currency
+                getCryptocurrencies()
             }
             is CoinsScreenEvent.GetCurrencies -> {
                 getCryptocurrencies()
@@ -49,7 +50,7 @@ class CoinsViewModel @Inject constructor(
 
     private fun getCryptocurrencies() {
         viewModelScope.launch(dispatcher) {
-            getCryptocurrenciesUseCase(currentCurrency.value).collect { resource ->
+            getCryptocurrenciesUseCase(currentCurrency.value.string).collect { resource ->
                 when(resource) {
                     is Resource.Error -> {
                         _isLoading.emit(false)
